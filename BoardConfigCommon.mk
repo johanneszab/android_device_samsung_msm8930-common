@@ -75,7 +75,7 @@ BOARD_HAVE_DOCK_USBAUDIO := true
 # TWRP specific build flags
 BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_15x24.h\"
 DEVICE_RESOLUTION := 540x960
-#RECOVERY_GRAPHICS_USE_LINELENGTH := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_NO_USB_STORAGE := true
@@ -114,7 +114,7 @@ TW_CRYPTO_KEY_LOC := "footer"
 TW_BRIGHTNESS_PATH := "/sys/devices/platform/mipi_samsung_oled.1281/lcd/panel/panel/brightness"
 TW_MAX_BRIGHTNESS := 255
 
-# TARGET_USERIMAGES_USE_EXT4 := true # already defined in cm
+#TARGET_USERIMAGES_USE_EXT4 := true # already defined in cm
 TW_INCLUDE_FB2PNG := true
 
 # Prevent greyish screen after screen timeout
