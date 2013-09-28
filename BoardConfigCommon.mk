@@ -72,11 +72,15 @@ BOARD_USES_SEPERATED_VOIP := true
 # Use USB Dock Audio
 BOARD_HAVE_DOCK_USBAUDIO := true
 
-# TWRP
+# TWRP specific build flags
+BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_15x24.h\"
 DEVICE_RESOLUTION := 540x960
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
+#RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_HAS_DOWNLOAD_MODE := true
+TW_NO_USB_STORAGE := true
+TWRP_EVENT_LOGGING := false
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # dual storage definition
 TW_INTERNAL_STORAGE_PATH := "/data/media/0"
@@ -90,13 +94,17 @@ SP1_MOUNTABLE := 1
 SP2_NAME := "modem"
 SP2_BACKUP_METHOD := image
 SP2_MOUNTABLE := 0
-#HAVE_SELINUX := true
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/virtual/android_usb/android0/f_mass_storage/lun0/file
+
+TW_INCLUDE_FUSE_EXFAT := true
+# Enable SELinux (> Android 4.3)
+HAVE_SELINUX := true
 
 # Encryption
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_SAMSUNG := true
 TW_CRYPTO_FS_TYPE := "ext4"
-TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/msm_sdcc.1/by-name/userdata"
+TW_CRYPTO_REAL_BLKDEV := "/dev/block/mmcblk0p24"
 TW_CRYPTO_MNT_POINT := "/data"
 TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,noauto_da_alloc,discard,journal_async_commit,errors=panic"
 TW_CRYPTO_FS_FLAGS := "0x00000406"
@@ -105,3 +113,9 @@ TW_CRYPTO_KEY_LOC := "footer"
 # Brightness
 TW_BRIGHTNESS_PATH := "/sys/devices/platform/mipi_samsung_oled.1281/lcd/panel/panel/brightness"
 TW_MAX_BRIGHTNESS := 255
+
+# TARGET_USERIMAGES_USE_EXT4 := true # already defined in cm
+TW_INCLUDE_FB2PNG := true
+
+# Prevent greyish screen after screen timeout
+TW_NO_SCREEN_TIMEOUT := true
